@@ -14,4 +14,6 @@
     <string name="em_andamento">Em andamento</string>
     <string name="nome">Nome</string>
     <string name="categoria">Categoria</string>
+    <string name="deletar_tarefa">Deletar Tarefa</string>
+    <string name="em_andamento2">Em andamento</string>
 </resources>
