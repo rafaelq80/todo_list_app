@@ -10,6 +10,7 @@ import br.com.generation.todolist.repository.CategoriaRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import retrofit2.Response
+import java.time.LocalDate
 import javax.inject.Inject
 
 @HiltViewModel
@@ -20,10 +21,13 @@ class MainViewModel @Inject constructor(
     private var _myCategoriaResponse =
         MutableLiveData<Response<List<Categoria>>>()
 
+    val dataSelecionada = MutableLiveData<LocalDate>()
+
    val myCategoriaResponse: LiveData<Response<List<Categoria>>> =
         _myCategoriaResponse
 
     init {
+        dataSelecionada.value = LocalDate.now()
         listCategoria()
     }
 

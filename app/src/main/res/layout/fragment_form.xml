@@ -9,62 +9,62 @@
     <!-- TODO: Update blank fragment layout -->
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/editDescricao"
         android:layout_width="380dp"
-        android:layout_height="0dp"
+        android:layout_height="48dp"
         android:layout_marginBottom="23dp"
         android:contentDescription="@string/descricao"
         android:text="@string/descri_o"
-        app:layout_constraintBottom_toTopOf="@+id/textView4"
-        app:layout_constraintStart_toStartOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintBottom_toTopOf="@+id/editResponsavel"
+        app:layout_constraintStart_toStartOf="@+id/editNome"
+        app:layout_constraintTop_toBottomOf="@+id/editNome"
         tools:ignore="MissingConstraints" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/editResponsavel"
         android:layout_width="380dp"
-        android:layout_height="0dp"
+        android:layout_height="48dp"
         android:layout_marginBottom="22dp"
         android:contentDescription="@string/responsavel"
         android:text="@string/respons_vel"
-        app:layout_constraintBottom_toTopOf="@+id/textView5"
-        app:layout_constraintStart_toStartOf="@+id/textView3"
-        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        app:layout_constraintBottom_toTopOf="@+id/editData"
+        app:layout_constraintStart_toStartOf="@+id/editDescricao"
+        app:layout_constraintTop_toBottomOf="@+id/editDescricao"
         tools:ignore="MissingConstraints" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/editData"
         android:layout_width="380dp"
-        android:layout_height="0dp"
+        android:layout_height="48dp"
         android:layout_marginBottom="23dp"
         android:contentDescription="@string/data"
         android:text="@string/data_2"
-        app:layout_constraintBottom_toTopOf="@+id/switch1"
-        app:layout_constraintStart_toStartOf="@+id/textView4"
-        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:layout_constraintBottom_toTopOf="@+id/switchStatus"
+        app:layout_constraintStart_toStartOf="@+id/editResponsavel"
+        app:layout_constraintTop_toBottomOf="@+id/editResponsavel"
         tools:ignore="MissingConstraints" />
 
     <Switch
-        android:id="@+id/switch1"
+        android:id="@+id/switchStatus"
         android:layout_width="380dp"
-        android:layout_height="0dp"
+        android:layout_height="48dp"
         android:layout_marginBottom="25dp"
         android:text="@string/em_andamento"
         app:layout_constraintBottom_toTopOf="@+id/spinnerCategoria"
-        app:layout_constraintStart_toStartOf="@+id/textView5"
-        app:layout_constraintTop_toBottomOf="@+id/textView5"
+        app:layout_constraintStart_toStartOf="@+id/editData"
+        app:layout_constraintTop_toBottomOf="@+id/editData"
         tools:ignore="MissingConstraints,UseSwitchCompatOrMaterialXml" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/editNome"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="48dp"
         android:layout_marginStart="12dp"
         android:layout_marginTop="49dp"
         android:layout_marginEnd="12dp"
         android:layout_marginBottom="23dp"
         android:text="@string/nome"
-        app:layout_constraintBottom_toTopOf="@+id/textView3"
+        app:layout_constraintBottom_toTopOf="@+id/editDescricao"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -73,22 +73,23 @@
     <Spinner
         android:id="@+id/spinnerCategoria"
         android:layout_width="380dp"
-        android:layout_height="0dp"
+        android:layout_height="48dp"
         android:layout_marginBottom="81dp"
         android:contentDescription="@string/categoria"
         app:layout_constraintBottom_toTopOf="@+id/buttonSalvar"
-        app:layout_constraintStart_toStartOf="@+id/switch1"
-        app:layout_constraintTop_toBottomOf="@+id/switch1"
+        app:layout_constraintStart_toStartOf="@+id/switchStatus"
+        app:layout_constraintTop_toBottomOf="@+id/switchStatus"
         tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/buttonSalvar"
         android:layout_width="148dp"
-        android:layout_height="0dp"
+        android:layout_height="48dp"
         android:layout_marginBottom="205dp"
         android:text="@string/salvar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinnerCategoria"
         tools:ignore="MissingConstraints" />

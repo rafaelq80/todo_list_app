@@ -10,9 +10,12 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import br.com.generation.todolist.databinding.FragmentFormBinding
+import br.com.generation.todolist.fragment.DatePickerFragment
+import br.com.generation.todolist.fragment.TimerPickerListener
 import br.com.generation.todolist.model.Categoria
+import java.time.LocalDate
 
-class FormFragment : Fragment() {
+class FormFragment : Fragment(), TimerPickerListener {
 
     private val mainViewModel: MainViewModel by activityViewModels()
 
@@ -28,6 +31,15 @@ class FormFragment : Fragment() {
         mainViewModel.myCategoriaResponse.observe(viewLifecycleOwner) {
                 response -> Log.d("Request", response.body().toString())
             spinnerCategoria(response.body())
+        }
+
+        mainViewModel.dataSelecionada.observe(viewLifecycleOwner) {
+            selectedDate -> binding.editData.text = selectedDate.toString()
+        }
+
+        binding.editData.setOnClickListener {
+            DatePickerFragment(this)
+                .show(parentFragmentManager, "DatePicker")
         }
 
         binding.buttonSalvar.setOnClickListener {
@@ -47,5 +59,9 @@ class FormFragment : Fragment() {
                     listCategoria
                 )
         }
+    }
+
+    override fun onDateSelected(date: LocalDate) {
+        mainViewModel.dataSelecionada.value = date
     }
 }
