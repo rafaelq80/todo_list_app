@@ -34,7 +34,7 @@ class ListFragment : Fragment() {
             findNavController().navigate(R.id.action_listFragment_to_formFragment)
         }
 
-        val listTarefa = listOf(
+      /*  val listTarefa = listOf(
             Tarefa(
                 1,
                 "Tarefa 01",
@@ -64,7 +64,7 @@ class ListFragment : Fragment() {
             )
         )
 
-        tarefaAdapter.setList(listTarefa)
+        tarefaAdapter.setList(listTarefa)*/
 
         return binding.root
     }

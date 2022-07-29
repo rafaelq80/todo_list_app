@@ -7,7 +7,6 @@ data class Tarefa (
     val responsavel: String,
     val data: String,
     val status: Boolean,
-    val categoria: String
-
+    val categoria: Categoria
 
 )
