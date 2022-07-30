@@ -1,6 +1,6 @@
 package br.com.generation.todolist.cli
 
-import br.com.generation.todolist.repository.CategoriaRepository
+import br.com.generation.todolist.repository.Repository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -13,8 +13,8 @@ object ServiceModule {
 
     @Singleton
     @Provides
-    fun provideRepository(): CategoriaRepository {
-        return CategoriaRepository()
+    fun provideRepository(): Repository {
+        return Repository()
     }
 
 }

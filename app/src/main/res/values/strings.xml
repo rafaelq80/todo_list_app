@@ -16,4 +16,10 @@
     <string name="categoria">Categoria</string>
     <string name="deletar_tarefa">Deletar Tarefa</string>
     <string name="em_andamento2">Em andamento</string>
+    <string name="nomeTarefa">Nome</string>
+    <string name="descricao_Tarefa">Descricao</string>
+    <string name="responsavel_Tarefa">Responsavel</string>
+    <string name="data_Tarefa">Data</string>
+    <string name="em_andamento_Tarefa">Em andamento</string>
+    <string name="salvar_Tarefa">Salvar</string>
 </resources>

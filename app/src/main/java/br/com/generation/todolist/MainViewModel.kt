@@ -6,7 +6,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import br.com.generation.todolist.model.Categoria
-import br.com.generation.todolist.repository.CategoriaRepository
+import br.com.generation.todolist.model.Tarefa
+import br.com.generation.todolist.repository.Repository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import retrofit2.Response
@@ -15,7 +16,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
-    private val categoriaRepository: CategoriaRepository
+    private val repository: Repository
 ): ViewModel(){
 
     private var _myCategoriaResponse =
@@ -31,11 +32,21 @@ class MainViewModel @Inject constructor(
         listCategoria()
     }
 
-    private fun listCategoria(){
+    fun listCategoria(){
         viewModelScope.launch{
             try {
-                val response = categoriaRepository.listCategoria()
+                val response = repository.listCategoria()
                 _myCategoriaResponse.value = response
+            }catch (e: Exception){
+                Log.d("Error", e.message.toString())
+            }
+        }
+    }
+
+    fun addTarefa(tarefa: Tarefa){
+        viewModelScope.launch {
+            try {
+                repository.addTarefa(tarefa)
             }catch (e: Exception){
                 Log.d("Error", e.message.toString())
             }
