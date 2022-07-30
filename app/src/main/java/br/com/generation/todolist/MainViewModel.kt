@@ -84,4 +84,14 @@ class MainViewModel @Inject constructor(
         }
     }
 
+    fun deleteTarefa(id: Long){
+        viewModelScope.launch {
+            try {
+                repository.deleteTarefa(id)
+                listTarefas()
+            }catch (e: Exception){
+                Log.d("Error", e.message.toString())
+            }
+        }
+    }
 }
