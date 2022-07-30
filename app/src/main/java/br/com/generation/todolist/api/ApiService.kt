@@ -6,6 +6,7 @@ import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.PUT
 
 interface ApiService {
 
@@ -19,5 +20,10 @@ interface ApiService {
 
     @GET("tarefas")
     suspend fun listTarefas(): Response<List<Tarefa>>
+
+    @PUT("tarefas")
+    suspend fun updateTarefa(
+        @Body tarefa: Tarefa
+    ): Response<Tarefa>
 
 }

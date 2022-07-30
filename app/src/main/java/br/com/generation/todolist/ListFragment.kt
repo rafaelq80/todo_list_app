@@ -9,10 +9,12 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.generation.todolist.adapter.TarefaAdapter
+import br.com.generation.todolist.adapter.TaskItemClickListener
 import br.com.generation.todolist.databinding.FragmentListBinding
+import br.com.generation.todolist.model.Tarefa
 
 
-class ListFragment : Fragment() {
+class ListFragment : Fragment(), TaskItemClickListener {
 
     private lateinit var binding: FragmentListBinding
     private val mainViewModel: MainViewModel by activityViewModels()
@@ -28,22 +30,28 @@ class ListFragment : Fragment() {
         binding = FragmentListBinding.inflate(layoutInflater, container, false)
 
         //Configuração do RecyclerView
-        val tarefaAdapter = TarefaAdapter()
-        binding.recyclerTarefa.adapter = tarefaAdapter
+        val adapter = TarefaAdapter(this, mainViewModel)
+        binding.recyclerTarefa.adapter = adapter
         binding.recyclerTarefa.layoutManager = LinearLayoutManager(context)
         binding.recyclerTarefa.setHasFixedSize(true)
 
         binding.floatingActionButton.setOnClickListener {
+            mainViewModel.tarefaSelecionada = null
             findNavController().navigate(R.id.action_listFragment_to_formFragment)
         }
 
         mainViewModel.myTarefaResponse.observe(viewLifecycleOwner) {
                 response -> if (response != null){
-                    tarefaAdapter.setList(response.body() !!)
+                    adapter.setList(response.body() !!)
                 }
         }
 
         return binding.root
+    }
+
+    override fun onTaskClickListener(tarefa: Tarefa) {
+        mainViewModel.tarefaSelecionada = tarefa
+        findNavController().navigate(R.id.action_listFragment_to_formFragment)
     }
 
 }

@@ -3,10 +3,14 @@ package br.com.generation.todolist.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import br.com.generation.todolist.MainViewModel
 import br.com.generation.todolist.databinding.CardLayoutBinding
 import br.com.generation.todolist.model.Tarefa
 
-class TarefaAdapter : RecyclerView.Adapter<TarefaAdapter.TarefaViewHolder>(){
+class TarefaAdapter(
+    private val taskClickListener: TaskItemClickListener,
+    private val mainViewModel: MainViewModel
+) : RecyclerView.Adapter<TarefaAdapter.TarefaViewHolder>(){
 
     private var listTarefa = emptyList<Tarefa>()
 
@@ -27,6 +31,17 @@ class TarefaAdapter : RecyclerView.Adapter<TarefaAdapter.TarefaViewHolder>(){
         holder.binding.textData.text = tarefa.data
         holder.binding.switchAtivo.isChecked = tarefa.status
         holder.binding.textCategoria.text = tarefa.categoria.descricao
+
+        holder.itemView.setOnClickListener {
+            taskClickListener.onTaskClickListener(tarefa)
+        }
+
+        holder.binding.switchAtivo
+            .setOnCheckedChangeListener { compoundButton, ativo ->
+                tarefa.status = ativo
+                mainViewModel.updateTarefa(tarefa)
+            }
+
     }
 
     override fun getItemCount(): Int {
