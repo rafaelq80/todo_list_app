@@ -1,26 +1,29 @@
 package br.com.generation.todolist
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.generation.todolist.adapter.TarefaAdapter
 import br.com.generation.todolist.databinding.FragmentListBinding
-import br.com.generation.todolist.model.Tarefa
 
 
 class ListFragment : Fragment() {
 
     private lateinit var binding: FragmentListBinding
+    private val mainViewModel: MainViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
+
+        mainViewModel.listTarefas()
 
         binding = FragmentListBinding.inflate(layoutInflater, container, false)
 
@@ -34,37 +37,11 @@ class ListFragment : Fragment() {
             findNavController().navigate(R.id.action_listFragment_to_formFragment)
         }
 
-      /*  val listTarefa = listOf(
-            Tarefa(
-                1,
-                "Tarefa 01",
-                "Descrição da Tarefa 01",
-                "Responsável 01",
-                "2002-07-28",
-                false,
-                "diária"
-            ),
-            Tarefa(
-                2,
-                "Tarefa 02",
-                "Descrição da Tarefa 02",
-                "Responsável 02",
-                "2002-07-29",
-                true,
-                "semanal"
-            ) ,
-            Tarefa(
-            3,
-            "Tarefa 03",
-            "Descrição da Tarefa 03",
-            "Responsável 03",
-            "2002-07-30",
-            false,
-            "mensal"
-            )
-        )
-
-        tarefaAdapter.setList(listTarefa)*/
+        mainViewModel.myTarefaResponse.observe(viewLifecycleOwner) {
+                response -> if (response != null){
+                    tarefaAdapter.setList(response.body() !!)
+                }
+        }
 
         return binding.root
     }

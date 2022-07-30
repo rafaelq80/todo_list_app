@@ -1,53 +1,41 @@
 package br.com.generation.todolist.adapter
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import br.com.generation.todolist.R
+import br.com.generation.todolist.databinding.CardLayoutBinding
 import br.com.generation.todolist.model.Tarefa
 
 class TarefaAdapter : RecyclerView.Adapter<TarefaAdapter.TarefaViewHolder>(){
 
-    private var listTarefas = emptyList<Tarefa>()
+    private var listTarefa = emptyList<Tarefa>()
 
-    class TarefaViewHolder(view: View) : RecyclerView.ViewHolder(view){
-
-        val textNome = view.findViewById<TextView>(R.id.textNome)
-        val textDescricao = view.findViewById<TextView>(R.id.textDescricao)
-        val textResponsavel = view.findViewById<TextView>(R.id.textResponsavel)
-        val textData = view.findViewById<TextView>(R.id.textData)
-        val switchAtivoCard = view.findViewById<TextView>(R.id.switchAtivo)
-        val textCategoria = view.findViewById<TextView>(R.id.textCategoria)
-        val buttonDeletar = view.findViewById<TextView>(R.id.buttonDeletar)
-
-    }
+    class TarefaViewHolder (val binding: CardLayoutBinding) : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TarefaViewHolder {
-         val layoutAdapter  = LayoutInflater.from(parent.context)
-            .inflate(R.layout.card_layout, parent, false)
-
-         return TarefaViewHolder(layoutAdapter)
+        return TarefaViewHolder(CardLayoutBinding.inflate(
+            LayoutInflater.from(parent.context), parent, false
+        ))
     }
 
     override fun onBindViewHolder(holder: TarefaViewHolder, position: Int) {
-        val tarefa = listTarefas[position]
+        val tarefa = listTarefa[position]
 
-        holder.textNome.text = tarefa.nome
-        holder.textDescricao.text = tarefa.descricao
-        holder.textResponsavel.text = tarefa.responsavel
-        holder.textData.text = tarefa.data
-        holder.switchAtivoCard.isPressed = tarefa.status
-        holder.textCategoria.text = tarefa.categoria.descricao
+        holder.binding.textNome.text = tarefa.nome
+        holder.binding.textDescricao.text = tarefa.descricao
+        holder.binding.textResponsavel.text = tarefa.responsavel
+        holder.binding.textData.text = tarefa.data
+        holder.binding.switchAtivo.isChecked = tarefa.status
+        holder.binding.textCategoria.text = tarefa.categoria.descricao
     }
 
     override fun getItemCount(): Int {
-        return listTarefas.size
+        return listTarefa.size
     }
 
-    fun setList(tarefas: List<Tarefa>){
-        this.listTarefas = tarefas
+    fun setList(list: List<Tarefa>){
+        listTarefa = list
         notifyDataSetChanged()
     }
+
 }
