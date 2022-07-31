@@ -8,77 +8,108 @@
 
     <!-- TODO: Update blank fragment layout -->
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment"
-        tools:layout_editor_absoluteX="89dp"
-        tools:layout_editor_absoluteY="0dp" />
+    <EditText
+        android:id="@+id/editNome"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:ems="10"
+        android:hint="@string/nomeTarefa"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:autofillHints="" />
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="380dp"
-        android:layout_height="33dp"
-        android:contentDescription="@string/descricao"
-        android:text="@string/descri_o"
-        app:layout_constraintStart_toStartOf="@+id/textView"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="105dp" />
+    <EditText
+        android:id="@+id/editDescricao"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:ems="10"
+        android:hint="@string/descricao_Tarefa"
+        android:inputType="textMultiLine|textPersonName"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editNome"
+        android:autofillHints="" />
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="380dp"
-        android:layout_height="33dp"
-        android:text="@string/respons_vel"
-        android:contentDescription="@string/responsavel"
-        app:layout_constraintStart_toStartOf="@+id/textView3"
-        tools:layout_editor_absoluteY="161dp"
-        tools:ignore="MissingConstraints" />
+    <EditText
+        android:id="@+id/editResponsavel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:ems="10"
+        android:hint="@string/responsavel_Tarefa"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:textColorHint="#757575"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editDescricao"
+        android:autofillHints="" />
 
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="380dp"
-        android:layout_height="33dp"
-        android:text="@string/data_2"
-        android:contentDescription="@string/data"
-        app:layout_constraintStart_toStartOf="@+id/textView4"
-        tools:layout_editor_absoluteY="216dp"
-        tools:ignore="MissingConstraints" />
+    <EditText
+        android:id="@+id/editData"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:ems="10"
+        android:focusable="false"
+        android:hint="@string/data_Tarefa"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editResponsavel"
+        android:autofillHints="" />
 
-    <Switch
-        android:id="@+id/switch1"
-        android:layout_width="380dp"
-        android:layout_height="50dp"
-        android:text="@string/em_andamento"
-        app:layout_constraintStart_toStartOf="@+id/textView5"
-        tools:ignore="MissingConstraints,UseSwitchCompatOrMaterialXml"
-        tools:layout_editor_absoluteY="272dp" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="380dp"
-        android:layout_height="33dp"
-        android:text="@string/nome"
-        tools:layout_editor_absoluteX="19dp"
-        tools:layout_editor_absoluteY="49dp"
-        tools:ignore="MissingConstraints" />
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/switchStatus"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:minHeight="48dp"
+        android:text="@string/em_andamento_Tarefa"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editData"
+        tools:ignore="UseSwitchCompatOrMaterialXml" />
 
     <Spinner
-        android:id="@+id/categoria"
-        android:layout_width="380dp"
-        android:layout_height="50dp"
-        app:layout_constraintStart_toStartOf="@+id/switch1"
-        tools:ignore="MissingConstraints"
-        android:contentDescription="@string/categoria"
-        tools:layout_editor_absoluteY="347dp" />
+        android:id="@+id/spinnerCategoria"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/switchStatus"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="148dp"
-        android:layout_height="48dp"
-        android:text="@string/salvar"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="131dp"
-        tools:layout_editor_absoluteY="478dp" />
+        android:id="@+id/buttonSalvar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/salvar_Tarefa"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerCategoria" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

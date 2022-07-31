@@ -14,4 +14,10 @@
     <string name="em_andamento">Em andamento</string>
     <string name="nome">Nome</string>
     <string name="categoria">Categoria</string>
+    <string name="nomeTarefa" />
+    <string name="descricao_Tarefa" />
+    <string name="responsavel_Tarefa" />
+    <string name="data_Tarefa" />
+    <string name="em_andamento_Tarefa" />
+    <string name="salvar_Tarefa" />
 </resources>
