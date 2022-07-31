@@ -31,7 +31,7 @@ class TarefaAdapter(
         holder.binding.textNome.text = tarefa.nome
         holder.binding.textDescricao.text = tarefa.descricao
         holder.binding.textResponsavel.text = tarefa.responsavel
-        holder.binding.textData.text = tarefa.data
+        holder.binding.textData.text = tarefa.data.subSequence(0, 10)
         holder.binding.switchAtivo.isChecked = tarefa.status
         holder.binding.textCategoria.text = tarefa.categoria.descricao
 
